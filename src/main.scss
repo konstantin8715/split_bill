@@ -17,8 +17,10 @@ body {
 }
 
 .container {
-    max-width: 1080px;
-    height: 100%;
+    max-width: 685px;
+    background: $dark-primary;
+    height: 90%;
     margin: 0 auto;
-    border: 2px solid red;
+    margin-top: 20px;
+    border-radius: 15px;
 }

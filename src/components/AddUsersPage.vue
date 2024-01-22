@@ -1,6 +1,6 @@
 <template lang="">
   <div class="container">
-    <v-form class="add-users-form" fast-fail @submit.prevent>
+    <v-form class="add-users-form w-75 d-flex justify-center pt-5 align-center" fast-fail @submit.prevent>
       <v-text-field
         class="add-users-form-input"
         v-model="currentName"
@@ -8,13 +8,13 @@
         :rules="currentNameRules"
       ></v-text-field>
 
-      <v-btn type="submit" style="border-radius: 15px" @click="addUser">
+      <v-btn class="ml-5" type="submit" style="border-radius: 50%; width: 10px; height: 50px" @click="addUser">
         <v-icon color="primary" icon="mdi-plus"></v-icon>
       </v-btn>
     </v-form>
 
-    <v-list density="compact">
-      <v-list-item v-for="user in users" :key="user.id" :value="user">
+    <v-list class="mt-5 w-75 users-list" density="compact">
+      <v-list-item class="d-flex" v-for="user in users" :key="user.id" :value="user">
         <v-list-item-title v-text="user.id"></v-list-item-title>
         <v-list-item-title v-text="user.name"></v-list-item-title>
         <v-btn style="border-radius: 15px" @click="deleteUser(user.id)">
@@ -70,11 +70,18 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../colors';
 .add-users-form {
-  display: flex;
-  justify-content: space-between;
+  margin: 0 auto;
   .add-users-form-input {
-    width: 100px;
+    background: $light-primary;
+    border: 5px solid $primary-text;
+    border-radius: 5px;
+    // width: 100px;
   }
+}
+
+.users-list {
+    margin: 0 auto;
 }
 </style>

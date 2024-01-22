@@ -4,8 +4,7 @@
         <div class="hello-banner">
           <span>Делить чек</span>
         </div>
-        <v-btn class="btn" style="height: 25%;" @click="$router.push('addusers')">
-            <!-- <router-link></router-link> -->
+        <v-btn class="btn" @click="$router.push('addusers')">
             Начать
         </v-btn>
       </div>
@@ -25,17 +24,16 @@
     justify-content: center;
     flex-direction: column;
     margin: 0 auto;
-    margin-top: 15%;
+    // margin-top: 15%;
     width: 65%;
-    height: 40%;
+    height: 100%;
     // border: 2px solid blue;  
   }
   .hello-banner {
     width: 100%;
-    height: 50%;
+    height: 25%;
     border: none;
     border-radius: 15px;
-    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,8 +47,9 @@
   
   .btn {
     margin-top: 10px;
-    background: $dark-primary;
+    background: $accent;
     width: 50%;
+    height: 15% !important;
     color: $text;
     font-size: 24px;
     border-radius: 15px;
