@@ -1,29 +1,34 @@
 <template lang="">
-  <div class="container">
-    <v-form class="add-users-form w-75 d-flex justify-center pt-5 align-center" fast-fail @submit.prevent>
-      <v-text-field
-        class="add-users-form-input"
-        v-model="currentName"
-        label="Введите имя"
-        :rules="currentNameRules"
-      ></v-text-field>
+  <v-card class="container">
+    <v-toolbar color="#7B1FA2">
+      <div
+        class="content-container d-flex justify-space-between flex-row align-center"
+      >
+        <input type="text" v-model="currentName" class="w-75 h-75" />
+        <v-icon icon="mdi-plus" @click="addUser"></v-icon>
+      </div>
+    </v-toolbar>
+    <div class="content-container">
+      <v-list density="compact">
+        <v-list-item
+          class="pa-0"
+          v-for="(user, i) in users"
+          :key="i"
+          :value="user"
+          color="primary"
+        >
+          <template v-slot:append>
+            <v-icon icon="mdi-close" @click="deleteUser(user.id)"></v-icon>
+          </template>
 
-      <v-btn class="ml-5" type="submit" style="border-radius: 50%; width: 10px; height: 50px" @click="addUser">
-        <v-icon color="primary" icon="mdi-plus"></v-icon>
-      </v-btn>
-    </v-form>
-
-    <v-list class="mt-5 w-75 users-list" density="compact">
-      <v-list-item class="d-flex" v-for="user in users" :key="user.id" :value="user">
-        <v-list-item-title v-text="user.id"></v-list-item-title>
-        <v-list-item-title v-text="user.name"></v-list-item-title>
-        <v-btn style="border-radius: 15px" @click="deleteUser(user.id)">
-          <v-icon color="primary" icon="mdi-close"></v-icon>
-        </v-btn>
-      </v-list-item>
-    </v-list>
-    <v-btn @click="checkUsers"> Дальше </v-btn>
-  </div>
+          <v-list-item-title v-text="user.name"></v-list-item-title>
+        </v-list-item>
+      </v-list>
+      <div class="btn-block">
+        <v-btn @click="checkUsers" class="btn"> Дальше </v-btn>
+      </div>
+    </div>
+  </v-card>
 </template>
 
 <script>
@@ -70,18 +75,43 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../colors';
+@import "../colors";
 .add-users-form {
   margin: 0 auto;
-  .add-users-form-input {
-    background: $light-primary;
-    border: 5px solid $primary-text;
-    border-radius: 5px;
-    // width: 100px;
-  }
+}
+
+.add-users-form-input {
+  padding: 10px;
+  margin-top: 20px;
+  //   background: $light-primary;
+  //   border: 5px solid $primary-text;
+  //   border-radius: 5px;
+  // width: 100px;
+}
+
+input {
+  outline: none;
+  border-bottom: 2px solid $text;
+  color: $text;
+  font-size: 1rem;
 }
 
 .users-list {
-    margin: 0 auto;
+  margin: 0 auto;
+}
+
+.btn {
+  background: $dark-primary;
+  color: $text;
+  width: 100%;
+}
+
+.btn-block {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.main-card {
+  background: $dark-primary !important;
 }
 </style>
