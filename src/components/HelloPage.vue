@@ -3,7 +3,7 @@
     <div class="content-container">
       <app-banner class="hello-banner">Делить чек</app-banner>
       <div class="btn-block">
-        <v-btn class="btn" @click="$router.push('addusers')"> Начать </v-btn>
+        <app-button @click="$router.push('addusers')">Начать</app-button>
       </div>
     </div>
   </v-card>
@@ -22,14 +22,6 @@
 .btn-block {
   width: 50%;
   margin: 0 auto;
+  margin-top: 10px;
 }
-.btn {
-  background: $primary;
-  width: 100%;
-  margin-top: 15px;
-  color: $text;
-  font-size: 24px;
-  border-radius: 10px;
-}
-
 </style>

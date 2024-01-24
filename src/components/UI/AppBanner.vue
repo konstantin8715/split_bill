@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  'name': 'app-banner',
+  name: "app-banner",
 };
 </script>
 
@@ -19,7 +19,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: $dark-primary;
+  background: $primary;
 
   span {
     font-size: 48px;
