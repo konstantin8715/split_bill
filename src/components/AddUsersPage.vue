@@ -5,12 +5,12 @@
       <div
         class="content-container d-flex justify-space-between flex-row align-center"
       >
-        <!-- TODO: input вынести в отдельный элемент UI -->
-        <input type="text" v-model="currentName" class="w-50 h-75" />
+        <app-input :type="'text'" v-model:value="currentName"></app-input>
         <v-icon icon="mdi-plus" @click="addUser"></v-icon>
       </div>
     </v-toolbar>
 
+    <!-- TODO: banner вынести в отдельный элемент UI -->
     <v-banner
       v-if="this.showWarningBanner"
       lines="three"
@@ -53,12 +53,6 @@ export default {
       currentName: "",
       currentId: 4,
       showWarningBanner: false,
-      currentNameRules: [
-        (value) => {
-          if (value.length > 0) return true;
-          return "Нужно ввести имя";
-        },
-      ],
     };
   },
 
@@ -72,9 +66,11 @@ export default {
         this.showWarningBanner = true;
       }
     },
+
     deletePersons(person) {
       this.persons = this.persons.filter((p) => p.id !== person.id);
     },
+
     checkPersons() {
       if (this.persons.length < 2) {
         alert("Введите больше 1 пользователя");
