@@ -60,10 +60,17 @@
         ></v-select>
       </div>
     </v-card>
+    
+    <div v-if="this.positionsStore.hasPositions" class="enter-btn info-message">
+      <div v-if="this.positionsStore.hasEmptyData" class="info-message">Заполните все поля</div>
+      <app-button v-else @click="enter">Дальше</app-button>
+    </div>
+    <div v-else class="info-message">Введите 1 или более позиций</div>
   </v-card>
 
-  <div v-for="position in this.positionsStore.positions"
-      :key="position.id">{{ JSON.stringify(position) }}</div>
+  <div v-for="position in this.positionsStore.positions" :key="position.id">
+    {{ JSON.stringify(position) }}
+  </div>
 </template>
 
 <script>
@@ -78,7 +85,12 @@ export default {
     };
   },
 
-  mounted() {
+  mounted() {},
+
+  methods: {
+    enter() {
+      this.$router.push("calculate");
+    },
   },
 };
 </script>
@@ -150,5 +162,16 @@ export default {
 
 .select {
   height: 75px;
+}
+
+.enter-btn {
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+
+.info-message {
+  margin-top: 15px;
+  text-align: center;
 }
 </style>

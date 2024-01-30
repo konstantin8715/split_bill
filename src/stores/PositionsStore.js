@@ -23,8 +23,24 @@ export const usePositionsStore = defineStore('positionsStore', {
 
     getters: {
         hasPositions() {
-            return this.persons.length > 0;
-        }
+            return this.positions.length > 0;
+        },
+
+        hasEmptyData() {
+            console.log('jfdlsj');
+            for (const p of this.positions) {
+                for (const key in p) {
+                    console.log(p[key]);
+                    if (!p[key]) {
+                        return true;
+                    }
+                    if (Array.isArray(p[key])) {
+                        if (p[key].length === 0) return true;
+                    }
+                }
+            }
+            return false;
+        },
     },
 
     actions: {
