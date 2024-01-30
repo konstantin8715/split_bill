@@ -6,7 +6,7 @@
         class="content-container d-flex justify-space-between flex-row align-center"
       >
         <app-input :type="'text'" v-model:value="currentName"></app-input>
-        <v-icon icon="mdi-plus" @click="addUser"></v-icon>
+        <v-icon icon="mdi-plus" @click="addPerson"></v-icon>
       </div>
     </v-toolbar>
 
@@ -28,38 +28,36 @@
     </v-banner>
 
     <div class="content-container">
-      <person-list :persons="persons" @delete="deletePersons" />
-      <div v-if="this.persons.length > 1" class="enter-btn">
-        <app-button @click="checkPersons">Дальше</app-button>
+      <person-list
+        :persons="this.personsStore.persons"
+        @delete="this.personsStore.deletePerson"
+      />
+      <div v-if="this.personsStore.hasPersons" class="enter-btn">
+        <app-button @click="enter">Дальше</app-button>
       </div>
-      <div class="info-message" v-else>Введите 2 или более персон</div>
+      <div v-else class="info-message">Введите 2 или более персон</div>
     </div>
   </v-card>
 </template>
 
 <script>
 import PersonList from "./PersonList.vue";
+import { usePersonsStore } from "../stores/PersonsStore.js";
 
 export default {
   components: { PersonList },
   data() {
     return {
-      persons: [
-        { id: 1, name: "Valera" },
-        { id: 2, name: "Nikita" },
-        { id: 3, name: "Mikhail" },
-        { id: 4, name: "Anna" },
-      ],
+      personsStore: usePersonsStore(),
       currentName: "",
-      currentId: 4,
       showWarningBanner: false,
     };
   },
 
   methods: {
-    addUser() {
+    addPerson() {
       if (this.currentName.length > 0) {
-        this.persons.push({ id: this.currentId++, name: this.currentName });
+        this.personsStore.addPerson(this.currentName);
         this.currentName = "";
         this.showWarningBanner = false;
       } else {
@@ -67,12 +65,8 @@ export default {
       }
     },
 
-    deletePersons(person) {
-      this.persons = this.persons.filter((p) => p.id !== person.id);
-    },
-
-    checkPersons() {
-      if (this.persons.length < 2) {
+    enter() {
+      if (!this.personsStore.hasPersons) {
         alert("Введите больше 1 пользователя");
       } else {
         this.$router.push("calculate");
@@ -95,9 +89,10 @@ input {
 .enter-btn {
   width: 50%;
   margin: 0 auto;
+  margin-bottom: 15px;
 }
 
 .info-message {
-    text-align: center;
+  text-align: center;
 }
 </style>

@@ -8,21 +8,45 @@
       </div>
     </v-toolbar>
 
-    <v-expansion-panels>
-      <v-expansion-panel
-        v-for="i in 3"
-        :key="i"
-        title="Item"
-      >
-      <v-expansion-panel-text>
+    <v-card
+      class="position-card"
+      v-for="position in this.positions"
+      :key="position.id"
+    >
+      <div class="content-container">
+        <div class="position-data-row">
+          <div class="position-data">
+            <input
+              type="text"
+              class="position-name"
+              v-model="position.name"
+              placeholder="Название"
+            />
+            <input
+              type="number"
+              class="position-price"
+              v-model="position.price"
+              placeholder="Цена"
+            />
+          </div>
 
-          <app-input :type="'text'" class="position-name"></app-input> <br>
-          <app-input :type="'number'" class="position-name"></app-input>
+          <v-icon icon="mdi-close"></v-icon>
+        </div>
 
-      </v-expansion-panel-text>
-    </v-expansion-panel>
-    </v-expansion-panels>
+        <!-- TODO: сделать результат map :items computed -->
+        <v-select class="select"
+          label="Плательщик"
+          :items="this.persons.map((p) => p.name)"
+        ></v-select>
 
+        <v-select class="select"
+          :items="this.persons.map((p) => p.name)"
+          chips
+          label="Кто ел?"
+          multiple
+        ></v-select>
+      </div>
+    </v-card>
   </v-card>
 </template>
 
@@ -60,8 +84,8 @@ export default {
 @import "../colors";
 
 .add-btn-block {
-    margin: 0 auto;
-    width: 50%;
+  margin: 0 auto;
+  width: 50%;
 }
 
 .add-btn {
@@ -70,19 +94,59 @@ export default {
 }
 
 @media (max-width: 432px) {
-    .add-btn-block {
-        width: 70%;;
-    }    
+  .add-btn-block {
+    width: 70%;
+  }
 }
 
 @media (max-width: 320px) {
-    .add-btn-block {
-        width: 80%;;
-    }    
+  .add-btn-block {
+    width: 80%;
+  }
 }
 
-.position-name {
-    border-color: $dark-primary;
-    color: $primary-text;
+.position-card {
+  width: 97%;
+  height: 200px;
+  margin: 0 auto;
+  background: $light-primary;
+  margin-top: 5px;
 }
+
+.position-name,
+.position-price {
+  border-color: $dark-primary !important;
+  color: $primary-text !important;
+}
+
+.position-data-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  .position-data {
+    .position-name,
+    .position-price {
+      border: 2px solid $dark-primary;
+      border-radius: 5px;
+      text-align: center;
+      color: $primary-text;
+      outline: none;
+      font-size: 20px;
+    }
+
+    .position-name {
+      width: 200px;
+    }
+
+    .position-price {
+      margin-left: 10px;
+      width: 100px;
+    }
+  }
+}
+
+.select {
+    height: 75px;
+}
+
 </style>

@@ -12,7 +12,6 @@ export default {
   name: "app-input",
   props: {
     value: {
-      type: String,
       requiered: true,
     },
     type: {

@@ -5,6 +5,9 @@ import App from './App.vue'
 import './main.scss';
 import router from './router/router';
 import myComponents from './components/UI';
+import {
+    createPinia
+} from 'pinia';
 
 import 'vuetify/styles'
 import {
@@ -26,6 +29,7 @@ const vuetify = createVuetify({
 })
 
 app
+    .use(createPinia())
     .use(router)
     .use(vuetify)
     .mount('#app');
