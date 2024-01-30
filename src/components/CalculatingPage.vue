@@ -60,7 +60,7 @@
         ></v-select>
       </div>
     </v-card>
-    
+
     <div v-if="this.positionsStore.hasPositions" class="enter-btn info-message">
       <div v-if="this.positionsStore.hasEmptyData" class="info-message">Заполните все поля</div>
       <app-button v-else @click="enter">Дальше</app-button>
@@ -89,7 +89,7 @@ export default {
 
   methods: {
     enter() {
-      this.$router.push("calculate");
+      this.$router.push("result");
     },
   },
 };
