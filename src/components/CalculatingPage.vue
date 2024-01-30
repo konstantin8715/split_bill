@@ -3,14 +3,16 @@
     <v-toolbar color="#7B1FA2">
       <div class="content-container">
         <div class="add-btn-block">
-          <app-button class="add-btn">Добавить позицию</app-button>
+          <app-button @click="this.positionsStore.addPosition" class="add-btn"
+            >Добавить позицию</app-button
+          >
         </div>
       </div>
     </v-toolbar>
 
     <v-card
       class="position-card"
-      v-for="position in this.positions"
+      v-for="position in this.positionsStore.positions"
       :key="position.id"
     >
       <div class="content-container">
@@ -30,17 +32,28 @@
             />
           </div>
 
-          <v-icon icon="mdi-close"></v-icon>
+          <v-icon
+            @click="this.positionsStore.deletePosition(position)"
+            icon="mdi-close"
+          ></v-icon>
         </div>
 
         <!-- TODO: сделать результат map :items computed -->
-        <v-select class="select"
+        <v-select
+          class="select"
+          v-model="position.payer"
           label="Плательщик"
-          :items="this.persons.map((p) => p.name)"
+          :items="this.personsStore.persons"
+          return-object
+          item-title="name"
         ></v-select>
 
-        <v-select class="select"
-          :items="this.persons.map((p) => p.name)"
+        <v-select
+          class="select"
+          v-model="position.consumers"
+          :items="this.personsStore.persons"
+          return-object
+          item-title="name"
           chips
           label="Кто ел?"
           multiple
@@ -48,34 +61,24 @@
       </div>
     </v-card>
   </v-card>
+
+  <div v-for="position in this.positionsStore.positions"
+      :key="position.id">{{ JSON.stringify(position) }}</div>
 </template>
 
 <script>
+import { usePositionsStore } from "../stores/PositionsStore.js";
+import { usePersonsStore } from "../stores/PersonsStore.js";
+
 export default {
   data() {
     return {
-      positions: [
-        { id: 1, name: "borsch", price: 150 },
-        { id: 2, name: "olivie", price: 250 },
-        { id: 3, name: "shaurma", price: 190 },
-        { id: 4, name: "krevetki", price: 350 },
-        { id: 5, name: "chai", price: 95 },
-      ],
-      persons: [
-        { id: 1, name: "Valera" },
-        { id: 2, name: "Nikita" },
-        { id: 3, name: "Mikhail" },
-        { id: 4, name: "Anna" },
-      ],
+      positionsStore: usePositionsStore(),
+      personsStore: usePersonsStore(),
     };
   },
 
   mounted() {
-    this.positions[0].payer = this.persons[0];
-    this.positions[1].payer = this.persons[2];
-    this.positions[2].payer = this.persons[3];
-    this.positions[3].payer = this.persons[1];
-    this.positions[4].payer = this.persons[3];
   },
 };
 </script>
@@ -146,7 +149,6 @@ export default {
 }
 
 .select {
-    height: 75px;
+  height: 75px;
 }
-
 </style>

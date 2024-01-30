@@ -4,24 +4,8 @@ import {
 
 export const usePersonsStore = defineStore('personsStore', {
     state: () => ({
-        persons: [{
-                id: 1,
-                name: "Valera"
-            },
-            {
-                id: 2,
-                name: "Nikita"
-            },
-            {
-                id: 3,
-                name: "Mikhail"
-            },
-            {
-                id: 4,
-                name: "Anna"
-            },
-        ],
-        currentId: 5,
+        persons: [],
+        currentId: 1,
     }),
 
     getters: {
