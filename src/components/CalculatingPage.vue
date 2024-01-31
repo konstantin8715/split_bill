@@ -50,7 +50,7 @@
 
         <v-select
           class="select"
-          v-model="position.consumers"
+          v-model="position.persons"
           :items="this.personsStore.persons"
           return-object
           item-title="name"
@@ -76,19 +76,26 @@
 <script>
 import { usePositionsStore } from "../stores/PositionsStore.js";
 import { usePersonsStore } from "../stores/PersonsStore.js";
+import { useDebtsStore } from "../stores/DebtsStore.js";
 
 export default {
   data() {
     return {
       positionsStore: usePositionsStore(),
       personsStore: usePersonsStore(),
+      debtsStore: useDebtsStore(),
     };
   },
 
-  mounted() {},
+  mounted() {
+    if (!this.personsStore.hasPersons) {
+      this.$router.push("addusers");
+    }
+  },
 
   methods: {
     enter() {
+      this.debtsStore.calculateDebts();
       this.$router.push("result");
     },
   },

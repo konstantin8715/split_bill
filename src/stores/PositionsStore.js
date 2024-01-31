@@ -27,14 +27,14 @@ export const usePositionsStore = defineStore('positionsStore', {
         },
 
         hasEmptyData() {
-            console.log('jfdlsj');
             for (const p of this.positions) {
                 for (const key in p) {
-                    console.log(p[key]);
                     if (!p[key]) {
+                        console.log(p[key]);
                         return true;
                     }
                     if (Array.isArray(p[key])) {
+                        console.log(p[key]);
                         if (p[key].length === 0) return true;
                     }
                 }
@@ -54,7 +54,7 @@ export const usePositionsStore = defineStore('positionsStore', {
                 name: null,
                 price: null,
                 payer: null,
-                consumers: []
+                persons: [],
             });
             this.currentId++;
         }
