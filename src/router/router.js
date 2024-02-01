@@ -1,6 +1,6 @@
 import HelloPage from '../components/HelloPage.vue';
-import AddUsersPage from '../components/AddUsersPage.vue';
-import CalculatingPage from '../components/CalculatingPage.vue';
+import AddPersonsPage from '../components/AddPersonsPage.vue';
+import AddPositionsPage from '../components/AddPositionsPage.vue';
 import ResultPage from '../components/ResultPage.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
@@ -11,11 +11,11 @@ const routes = [
     },
     {
         path: '/addusers',
-        component: AddUsersPage,
+        component: AddPersonsPage,
     },
     {
-        path: '/calculate',
-        component: CalculatingPage,
+        path: '/addpositions',
+        component: AddPositionsPage,
     },
     {
         path: '/result',

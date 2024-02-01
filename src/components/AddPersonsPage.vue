@@ -5,7 +5,7 @@
       <div
         class="content-container d-flex justify-space-between flex-row align-center"
       >
-        <app-input :type="'text'" v-model:value="currentName"></app-input>
+        <app-input :type="'text'" @keyup.enter="addPerson" v-model:value="currentName"></app-input>
         <v-icon icon="mdi-plus" @click="addPerson"></v-icon>
       </div>
     </v-toolbar>
@@ -69,7 +69,7 @@ export default {
       if (!this.personsStore.hasPersons) {
         alert("Введите больше 1 пользователя");
       } else {
-        this.$router.push("calculate");
+        this.$router.push("addpositions");
       }
     },
   },
