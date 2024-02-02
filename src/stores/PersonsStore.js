@@ -7,18 +7,19 @@ import {
 } from "../stores/PositionsStore.js";
 
 import {
-    personsApi
-} from '../storage/PersonsApi.js';
+    useDebtsStore
+} from "../stores/DebtsStore.js";
 
 import {
-    positionsApi
-} from '../storage/PositionsApi.js';
+    personsApi
+} from '../storage/PersonsApi.js';
 
 export const usePersonsStore = defineStore('personsStore', {
     state: () => ({
         persons: [],
         currentId: 1,
         positionsStore: usePositionsStore(),
+        debtsStore: useDebtsStore(),
     }),
 
     getters: {
@@ -48,9 +49,9 @@ export const usePersonsStore = defineStore('personsStore', {
 
 
         deletePerson(person) {
-            this.persons = this.persons.filter(p => p.id !== person.id);
-            this.positionsStore.$reset();
-            positionsApi.deleteAllPositions();
+            this.persons = this.persons.filter(p => p.id !== person.id);    
+            this.positionsStore.deleteAllPositions();
+            this.debtsStore.deleteAllDebts();
             personsApi.setPersons(this.persons);
         },
 

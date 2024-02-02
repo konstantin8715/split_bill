@@ -62,7 +62,9 @@
     </v-card>
 
     <div v-if="this.positionsStore.hasPositions" class="enter-btn info-message">
-      <div v-if="this.positionsStore.hasEmptyData" class="info-message">Заполните все поля</div>
+      <div v-if="this.positionsStore.hasEmptyData" class="info-message">
+        Заполните все поля
+      </div>
       <app-button v-else @click="enter">Дальше</app-button>
     </div>
     <div v-else class="info-message">Введите 1 или более позиций</div>
@@ -98,10 +100,14 @@ export default {
     this.personsStore.loadPersons();
     if (!this.personsStore.hasPersons) {
       this.$router.push("addpersons");
-    }
-    else {
+    } else {
       this.positionsStore.loadPositions();
     }
+  },
+
+  updated() {
+    console.log('updated');
+    this.positionsStore.saveCurrentPositions();
   },
 };
 </script>

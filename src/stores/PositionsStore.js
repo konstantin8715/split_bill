@@ -64,6 +64,10 @@ export const usePositionsStore = defineStore('positionsStore', {
             }
         },
 
+        saveCurrentPositions() {
+            positionsApi.setPositions(this.positions);
+        },
+
         deletePosition(position) {
             this.positions = this.positions.filter(p => p.id !== position.id);
             positionsApi.setPositions(this.positions);
@@ -80,6 +84,11 @@ export const usePositionsStore = defineStore('positionsStore', {
             this.currentId++;
             positionsApi.setPositions(this.positions);
             positionsApi.setCurrentId(this.currentId);
+        },
+
+        deleteAllPositions() {
+            this.$reset();
+            positionsApi.deleteAllPositions();
         }
     }
 });
