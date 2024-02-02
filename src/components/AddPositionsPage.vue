@@ -89,7 +89,7 @@ export default {
 
   beforeMount() {
     if (!this.personsStore.hasPersons) {
-      this.$router.push("addusers");
+      this.$router.push("addpersons");
     }
   },
 
@@ -99,6 +99,21 @@ export default {
       this.$router.push("result");
     },
   },
+
+  // beforeMount() {
+  //    console.log('created');
+  //   // Подписываемся на изменения в состоянии
+  //   this.personsStore.$subscribe((mutation) => {
+  //     console.log('mutation');
+  //     this.positionsStore.$reset();
+  //   });
+  // },
+
+  // watch: {
+  //   isPersonsListChanged() {
+  //     this.positionsStore.clearCurrentPositions();
+  //   }
+  // }
 };
 </script>
 

@@ -10,7 +10,7 @@ const routes = [
         component: HelloPage,
     },
     {
-        path: '/addusers',
+        path: '/addpersons',
         component: AddPersonsPage,
     },
     {

@@ -3,6 +3,7 @@
     <v-toolbar color="#7B1FA2"> </v-toolbar>
     <div class="content-container">
       <div
+        v-if="this.debtsStore.debts.length > 0"
         v-for="(debt, i) in this.debtsStore.debts"
         :key="i"
         class="debts-container d-flex justify-space-between"
@@ -20,6 +21,7 @@
 
         <div>{{ debt.to.name }}</div>
       </div>
+      <div v-else class="info-message">Никто никому ничего не должен!</div>
     </div>
   </v-card>
 </template>
@@ -45,4 +47,9 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.info-message {
+  margin-top: 15px;
+  text-align: center;
+}
+</style>

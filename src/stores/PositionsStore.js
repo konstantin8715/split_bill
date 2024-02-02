@@ -30,11 +30,9 @@ export const usePositionsStore = defineStore('positionsStore', {
             for (const p of this.positions) {
                 for (const key in p) {
                     if (!p[key]) {
-                        console.log(p[key]);
                         return true;
                     }
                     if (Array.isArray(p[key])) {
-                        console.log(p[key]);
                         if (p[key].length === 0) return true;
                     }
                 }
@@ -44,6 +42,12 @@ export const usePositionsStore = defineStore('positionsStore', {
     },
 
     actions: {
+        clearCurrentPositions() {
+            console.log('function clearCurrentPostions');
+            this.positions = [];
+            this.currentId = 1;
+        },
+
         deletePosition(position) {
             this.positions = this.positions.filter(p => p.id !== position.id);
         },

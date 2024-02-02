@@ -3,7 +3,7 @@
     <div class="content-container">
       <app-banner class="hello-banner">Делить чек</app-banner>
       <div class="btn-block">
-        <app-button @click="$router.push('addusers')">Начать</app-button>
+        <app-button @click="$router.push('addpersons')">Начать</app-button>
       </div>
     </div>
   </v-card>

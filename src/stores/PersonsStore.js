@@ -2,10 +2,13 @@ import {
     defineStore
 } from 'pinia';
 
+import { usePositionsStore } from "../stores/PositionsStore.js";
+
 export const usePersonsStore = defineStore('personsStore', {
     state: () => ({
         persons: [],
         currentId: 1,
+        positionsStore: usePositionsStore(),
     }),
 
     getters: {
@@ -17,6 +20,7 @@ export const usePersonsStore = defineStore('personsStore', {
     actions: {
         deletePerson(person) {
             this.persons = this.persons.filter(p => p.id !== person.id);
+            this.positionsStore.$reset();
         },
 
         addPerson(name) {
