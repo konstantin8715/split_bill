@@ -5,7 +5,11 @@
       <div
         class="content-container d-flex justify-space-between flex-row align-center"
       >
-        <app-input :type="'text'" @keyup.enter="addPerson" v-model:value="currentName"></app-input>
+        <app-input
+          :type="'text'"
+          @keyup.enter="addPerson"
+          v-model:value="currentName"
+        ></app-input>
         <v-icon icon="mdi-plus" @click="addPerson"></v-icon>
       </div>
     </v-toolbar>
@@ -72,6 +76,10 @@ export default {
         this.$router.push("addpositions");
       }
     },
+  },
+
+  mounted() {
+    this.personsStore.loadPersons();
   },
 };
 </script>

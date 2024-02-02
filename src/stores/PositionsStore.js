@@ -6,6 +6,10 @@ import {
     usePersonsStore
 } from './PersonsStore.js';
 
+import {
+    positionsApi
+} from '../storage/PositionsApi.js';
+
 export const usePositionsStore = defineStore('positionsStore', {
     state: () => ({
         positions: [
@@ -42,14 +46,27 @@ export const usePositionsStore = defineStore('positionsStore', {
     },
 
     actions: {
-        clearCurrentPositions() {
-            console.log('function clearCurrentPostions');
-            this.positions = [];
-            this.currentId = 1;
+        loadPositions() {
+            const positions = positionsApi.getPositions();
+            const currentId = positionsApi.getCurrentId();
+
+            if (positions) {
+                this.positions = positions;
+            } else {
+                this.positions = [];
+            }
+
+
+            if (currentId) {
+                this.currentId = currentId;
+            } else {
+                this.currentId = 1;
+            }
         },
 
         deletePosition(position) {
             this.positions = this.positions.filter(p => p.id !== position.id);
+            positionsApi.setPositions(this.positions);
         },
 
         addPosition() {
@@ -61,6 +78,8 @@ export const usePositionsStore = defineStore('positionsStore', {
                 persons: [],
             });
             this.currentId++;
+            positionsApi.setPositions(this.positions);
+            positionsApi.setCurrentId(this.currentId);
         }
     }
 });

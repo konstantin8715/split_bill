@@ -87,12 +87,6 @@ export default {
     };
   },
 
-  beforeMount() {
-    if (!this.personsStore.hasPersons) {
-      this.$router.push("addpersons");
-    }
-  },
-
   methods: {
     enter() {
       this.debtsStore.calculateDebts();
@@ -100,20 +94,15 @@ export default {
     },
   },
 
-  // beforeMount() {
-  //    console.log('created');
-  //   // Подписываемся на изменения в состоянии
-  //   this.personsStore.$subscribe((mutation) => {
-  //     console.log('mutation');
-  //     this.positionsStore.$reset();
-  //   });
-  // },
-
-  // watch: {
-  //   isPersonsListChanged() {
-  //     this.positionsStore.clearCurrentPositions();
-  //   }
-  // }
+  mounted() {
+    this.personsStore.loadPersons();
+    if (!this.personsStore.hasPersons) {
+      this.$router.push("addpersons");
+    }
+    else {
+      this.positionsStore.loadPositions();
+    }
+  },
 };
 </script>
 
