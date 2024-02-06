@@ -8,7 +8,8 @@ export const splitAlgo = function(positions) {
         const payer = position.payer;
 
         for (const person of position.persons) {
-            if (person != payer) {
+
+            if (person.id !== payer.id) {
                 allDebts.push({
                     from: person,
                     to: payer,
@@ -62,13 +63,13 @@ export const splitAlgo = function(positions) {
             calculateDebts.push({
                 from: fromTo.from,
                 to: toFrom.from,
-                sum: fromTo.sum - toFrom.sum,
+                sum: Math.round(fromTo.sum - toFrom.sum),
             });
         } else {
             calculateDebts.push({
                 from: toFrom.from,
                 to: fromTo.from,
-                sum: toFrom.sum - fromTo.sum,
+                sum: Math.round(toFrom.sum - fromTo.sum),
             });
         }
     }

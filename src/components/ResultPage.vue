@@ -22,7 +22,7 @@
         <div>{{ debt.to.name }}</div>
       </div>
       <div v-else class="info-message">Никто никому ничего не должен!</div>
-      <app-button @click='reset'>Сброс</app-button>
+      <app-button @click="reset">Начать сначала</app-button>
     </div>
   </v-card>
 </template>
@@ -41,9 +41,17 @@ export default {
     };
   },
 
-  beforeMount() {
-    this.debtsStore.loadDebts();
-    if (!this.debtsStore.hasDebts) {
+  mounted() {
+    // Метод сделан так тупо, потому что this.positionsStore.hasEmptyData
+    // очень ресурсоемкая операция
+    this.positionsStore.loadPositions();
+    if (this.positionsStore.hasPositions) {
+      if (!this.positionsStore.hasEmptyData) {
+        this.debtsStore.calculateDebts();
+      } else {
+        this.$router.push("addpositions");
+      }
+    } else {
       this.$router.push("addpositions");
     }
   },
@@ -55,7 +63,7 @@ export default {
       this.positionsStore.$reset();
       sessionStorage.clear();
       this.$router.push("/");
-    }
+    },
   },
 };
 </script>

@@ -30,23 +30,23 @@ export const useDebtsStore = defineStore('debtsStore', {
     actions: {
         calculateDebts() {
             this.debts = splitAlgo(this.positionsStore.positions);
-            debtsApi.setDebts(this.debts);
+            // debtsApi.setDebts(this.debts);
         },
 
-        loadDebts() {
-            const debts = debtsApi.getDebts();
+        // loadDebts() {
+        //     const debts = debtsApi.getDebts();
 
-            if (debts) {
-                this.debts = debts;
-            }
-            else {
-                this.debts = [];
-            }
-        },
+        //     if (debts) {
+        //         this.debts = debts;
+        //     }
+        //     else {
+        //         this.debts = [];
+        //     }
+        // },
 
-        deleteAllDebts() {
-            this.$reset();
-            debtsApi.deleteAllDebts();
-        }
+        // deleteAllDebts() {
+        //     this.$reset();
+        //     debtsApi.deleteAllDebts();
+        // }
     }
 });

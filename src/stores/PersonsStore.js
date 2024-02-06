@@ -51,7 +51,7 @@ export const usePersonsStore = defineStore('personsStore', {
         deletePerson(person) {
             this.persons = this.persons.filter(p => p.id !== person.id);    
             this.positionsStore.deleteAllPositions();
-            this.debtsStore.deleteAllDebts();
+            // this.debtsStore.deleteAllDebts();
             personsApi.setPersons(this.persons);
         },
 

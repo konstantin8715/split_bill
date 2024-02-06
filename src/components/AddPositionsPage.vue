@@ -38,7 +38,6 @@
           ></v-icon>
         </div>
 
-        <!-- TODO: сделать результат map :items computed -->
         <v-select
           class="select"
           v-model="position.payer"
@@ -91,7 +90,7 @@ export default {
 
   methods: {
     enter() {
-      this.debtsStore.calculateDebts();
+      // this.debtsStore.calculateDebts();
       this.$router.push("result");
     },
   },
