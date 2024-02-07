@@ -14,38 +14,29 @@
       </div>
     </v-toolbar>
 
-    <!-- TODO: banner вынести в отдельный элемент UI -->
-    <v-banner
+    <app-warning-banner
       v-if="this.showWarningBanner"
-      lines="three"
-      icon="$warning"
-      color="#9C27B0"
-      class="my-4"
-    >
-      <v-banner-text>
-        Имя должно состоять из одного и более символа
-      </v-banner-text>
-
-      <template v-slot:actions>
-        <v-btn @click="this.showWarningBanner = false">Скрыть</v-btn>
-      </template>
-    </v-banner>
+      @hide="this.hideWarningBanner"
+    />
 
     <div class="content-container">
       <person-list
         :persons="this.personsStore.persons"
         @delete="this.personsStore.deletePerson"
       />
-      <div v-if="this.personsStore.hasPersons" class="enter-btn">
+      <div v-if="this.personsStore.hasPersons" class="navigate-btn">
         <app-button @click="enter">Дальше</app-button>
       </div>
       <div v-else class="info-message">Введите 2 или более персон</div>
+      <div class="navigate-btn">
+        <app-button @click="back">Назад</app-button>
+      </div>
     </div>
   </v-card>
 </template>
 
 <script>
-import PersonList from "./PersonList.vue";
+import PersonList from "../components/PersonList.vue";
 import { usePersonsStore } from "../stores/PersonsStore.js";
 
 export default {
@@ -76,6 +67,14 @@ export default {
         this.$router.push("addpositions");
       }
     },
+
+    back() {
+      this.$router.push("/");
+    },
+
+    hideWarningBanner() {
+      this.showWarningBanner = false;
+    },
   },
 
   mounted() {
@@ -94,7 +93,7 @@ input {
   font-size: 1rem;
 }
 
-.enter-btn {
+.navigate-btn {
   width: 50%;
   margin: 0 auto;
   margin-bottom: 15px;

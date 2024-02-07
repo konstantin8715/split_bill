@@ -69,6 +69,7 @@ export const usePositionsStore = defineStore('positionsStore', {
         },
 
         deletePosition(position) {
+            console.log(position.id);
             this.positions = this.positions.filter(p => p.id !== position.id);
             positionsApi.setPositions(this.positions);
         },

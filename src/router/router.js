@@ -1,7 +1,7 @@
-import HelloPage from '../components/HelloPage.vue';
-import AddPersonsPage from '../components/AddPersonsPage.vue';
-import AddPositionsPage from '../components/AddPositionsPage.vue';
-import ResultPage from '../components/ResultPage.vue';
+import HelloPage from '../pages/HelloPage.vue';
+import AddPersonsPage from '../pages/AddPersonsPage.vue';
+import AddPositionsPage from '../pages/AddPositionsPage.vue';
+import ResultPage from '../pages/ResultPage.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [

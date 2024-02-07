@@ -18,6 +18,7 @@
       <div class="content-container">
         <div class="position-data-row">
           <div class="position-data">
+            {{ position.id }}
             <input
               type="text"
               class="position-name"
@@ -60,16 +61,26 @@
       </div>
     </v-card>
 
-    <div v-if="this.positionsStore.hasPositions" class="enter-btn info-message">
-      <div v-if="this.positionsStore.hasEmptyData" class="info-message">
+    <div
+      v-if="this.positionsStore.hasPositions"
+      class="navigate-btn info-message"
+    >
+      <div v-if="this.positionsStore.hasEmptyData">
         Заполните все поля
       </div>
       <app-button v-else @click="enter">Дальше</app-button>
     </div>
     <div v-else class="info-message">Введите 1 или более позиций</div>
+    <div class="navigate-btn info-message">
+      <app-button @click="back">Назад</app-button>
+    </div>
   </v-card>
 
-  <div v-for="position in this.positionsStore.positions" :key="position.id">
+  <div
+    style="display: none"
+    v-for="position in this.positionsStore.positions"
+    :key="position.id"
+  >
     {{ JSON.stringify(position) }}
   </div>
 </template>
@@ -90,8 +101,11 @@ export default {
 
   methods: {
     enter() {
-      // this.debtsStore.calculateDebts();
       this.$router.push("result");
+    },
+
+    back() {
+      this.$router.push("addpersons");
     },
   },
 
@@ -105,7 +119,6 @@ export default {
   },
 
   updated() {
-    console.log('updated');
     this.positionsStore.saveCurrentPositions();
   },
 };
@@ -180,7 +193,7 @@ export default {
   height: 75px;
 }
 
-.enter-btn {
+.navigate-btn {
   width: 50%;
   margin: 0 auto;
   margin-bottom: 15px;

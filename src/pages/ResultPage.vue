@@ -22,7 +22,12 @@
         <div>{{ debt.to.name }}</div>
       </div>
       <div v-else class="info-message">Никто никому ничего не должен!</div>
-      <app-button @click="reset">Начать сначала</app-button>
+      <div class="navigate-btn">
+        <app-button @click="reset">Начать сначала</app-button>
+      </div>
+      <div class="navigate-btn info-message">
+        <app-button @click="back">Назад</app-button>
+      </div>
     </div>
   </v-card>
 </template>
@@ -64,6 +69,10 @@ export default {
       sessionStorage.clear();
       this.$router.push("/");
     },
+
+    back() {
+      this.$router.push("addpositions");
+    },
   },
 };
 </script>
@@ -72,5 +81,11 @@ export default {
 .info-message {
   margin-top: 15px;
   text-align: center;
+}
+
+.navigate-btn {
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 15px;
 }
 </style>
