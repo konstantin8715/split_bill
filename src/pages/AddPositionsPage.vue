@@ -10,7 +10,12 @@
       </div>
     </v-toolbar>
 
-    <v-card
+    <position-cards
+      :positions="this.positionsStore.positions"
+      :persons="this.personsStore.persons"
+      @delete="this.positionsStore.deletePosition"
+    />
+    <!-- <v-card
       class="position-card"
       v-for="position in this.positionsStore.positions"
       :key="position.id"
@@ -59,7 +64,7 @@
           multiple
         ></v-select>
       </div>
-    </v-card>
+    </v-card> -->
 
     <div class="content-container">
       <div
@@ -78,11 +83,7 @@
     </div>
   </v-card>
 
-  <div
-    style="display: none"
-    v-for="position in this.positionsStore.positions"
-    :key="position.id"
-  >
+  <div v-for="position in this.positionsStore.positions" :key="position.id">
     {{ JSON.stringify(position) }}
   </div>
 </template>
@@ -91,8 +92,10 @@
 import { usePositionsStore } from "../stores/PositionsStore.js";
 import { usePersonsStore } from "../stores/PersonsStore.js";
 import { useDebtsStore } from "../stores/DebtsStore.js";
+import PositionCards from "../components/PositionCards.vue";
 
 export default {
+  components: {PositionCards},
   data() {
     return {
       positionsStore: usePositionsStore(),
