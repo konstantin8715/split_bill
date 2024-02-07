@@ -24,11 +24,11 @@
         :persons="this.personsStore.persons"
         @delete="this.personsStore.deletePerson"
       />
-      <div v-if="this.personsStore.hasPersons" class="navigate-btn">
+      <div v-if="this.personsStore.hasPersons" class="ma-auto mb-3 w-50">
         <app-button @click="enter">Дальше</app-button>
       </div>
-      <div v-else class="info-message">Введите 2 или более персон</div>
-      <div class="navigate-btn">
+      <div v-else class="text-center mb-3">Введите 2 или более персон</div>
+      <div class="ma-auto mb-3 w-50">
         <app-button @click="back">Назад</app-button>
       </div>
     </div>
@@ -84,22 +84,4 @@ export default {
 </script>
 
 <style scoped lang="scss">
-// TODO: input вынести в отдельный элемент UI
-@import "../colors";
-input {
-  outline: none;
-  border-bottom: 2px solid $text;
-  color: $text;
-  font-size: 1rem;
-}
-
-.navigate-btn {
-  width: 50%;
-  margin: 0 auto;
-  margin-bottom: 15px;
-}
-
-.info-message {
-  text-align: center;
-}
 </style>

@@ -61,18 +61,20 @@
       </div>
     </v-card>
 
-    <div
-      v-if="this.positionsStore.hasPositions"
-      class="navigate-btn info-message"
-    >
-      <div v-if="this.positionsStore.hasEmptyData">
-        Заполните все поля
+    <div class="content-container">
+      <div
+        v-if="this.positionsStore.hasPositions"
+        class="ma-auto mb-3 w-50 mt-4"
+      >
+        <div class="text-center" v-if="this.positionsStore.hasEmptyData">
+          Заполните все поля
+        </div>
+        <app-button v-else @click="enter">Дальше</app-button>
       </div>
-      <app-button v-else @click="enter">Дальше</app-button>
-    </div>
-    <div v-else class="info-message">Введите 1 или более позиций</div>
-    <div class="navigate-btn info-message">
-      <app-button @click="back">Назад</app-button>
+      <div v-else class="text-center">Введите 1 или более позиций</div>
+      <div class="ma-auto mb-3 w-50">
+        <app-button @click="back">Назад</app-button>
+      </div>
     </div>
   </v-card>
 
@@ -127,14 +129,14 @@ export default {
 <style scoped lang="scss">
 @import "../colors";
 
-.add-btn-block {
-  margin: 0 auto;
-  width: 50%;
-}
-
 .add-btn {
   background: $light-primary !important;
   color: $dark-primary !important;
+}
+
+.add-btn-block {
+  margin: 0 auto;
+  width: 50%;
 }
 
 @media (max-width: 432px) {
