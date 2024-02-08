@@ -21,7 +21,9 @@
 
         <div>{{ debt.to.name }}</div>
       </div>
-      <div v-else class="info-message">Никто никому ничего не должен!</div>
+      <div v-else class="info-message">
+        <app-info-text>Никто никому ничего не должен!</app-info-text>
+      </div>
       <div class="navigate-btn">
         <app-button @click="reset">Начать сначала</app-button>
       </div>

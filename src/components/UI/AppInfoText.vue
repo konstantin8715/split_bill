@@ -1,33 +1,29 @@
 <template lang="">
-  <v-btn class="btn w-100">
-    <slot></slot>
-  </v-btn>
+    <span class='info-text'>
+        <slot></slot>
+    </span>
 </template>
 
 <script>
 export default {
-  name: "app-button",
-};
+    name: 'app-info-text',
+}
 </script>
 
 <style scoped lang="scss">
-@import "../../colors";
 @import "../../font";
-
-.btn {
-  color: $text;
-  background: $dark-primary;
-  font-size: $large-button-text;
+.info-text {
+    font-size: $large-text;
 }
 
 @media (max-width: 769px) {
-  .btn {
+  .info-text {
     font-size: $medium-button-text;
   }
 }
 
 @media (max-width: 371px) {
-  .btn {
+  .info-text {
     font-size: $small-button-text;
   }
 }

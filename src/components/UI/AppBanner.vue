@@ -1,5 +1,5 @@
 <template lang="">
-  <div class="app-banner">
+  <div class="app-banner d-flex align-center justify-center">
     <span><slot></slot></span>
   </div>
 </template>
@@ -12,17 +12,14 @@ export default {
 
 <style scoped lang="scss">
 @import "../../colors";
+@import "../../font";
 .app-banner {
   width: 90%;
-  border: none;
   border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background: $primary;
 
   span {
-    font-size: 48px;
+    font-size: $banner-size-lg;
     color: $text;
   }
 }
@@ -30,7 +27,7 @@ export default {
 @media (max-width: 371px) {
   .app-banner {
     span {
-      font-size: 40px;
+      font-size: $banner-size;
     }
   }
 }

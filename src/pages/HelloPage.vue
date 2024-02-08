@@ -1,8 +1,8 @@
 <template>
   <v-card class="container">
     <div class="content-container">
-      <app-banner class="hello-banner">Делить чек</app-banner>
-      <div class="btn-block">
+      <app-banner class="hello-banner ma-auto">Делить чек</app-banner>
+      <div class="btn-block w-50 ma-auto mt-4">
         <app-button @click="$router.push('addpersons')">Начать</app-button>
       </div>
     </div>
@@ -15,13 +15,11 @@
 @import "../colors";
 
 .hello-banner {
-  margin: 0 auto;
-  margin-top: 40%;
+  margin-top: 30% !important;
+  height: 110px;
 }
 
 .btn-block {
-  width: 50%;
-  margin: 0 auto;
   margin-top: 10px;
 }
 </style>

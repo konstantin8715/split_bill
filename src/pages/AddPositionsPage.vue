@@ -15,75 +15,31 @@
       :persons="this.personsStore.persons"
       @delete="this.positionsStore.deletePosition"
     />
-    <!-- <v-card
-      class="position-card"
-      v-for="position in this.positionsStore.positions"
-      :key="position.id"
-    >
-      <div class="content-container">
-        <div class="position-data-row">
-          <div class="position-data">
-            {{ position.id }}
-            <input
-              type="text"
-              class="position-name"
-              v-model="position.name"
-              placeholder="Название"
-            />
-            <input
-              type="number"
-              class="position-price"
-              v-model="position.price"
-              placeholder="Цена"
-            />
-          </div>
-
-          <v-icon
-            @click="this.positionsStore.deletePosition(position)"
-            icon="mdi-close"
-          ></v-icon>
-        </div>
-
-        <v-select
-          class="select"
-          v-model="position.payer"
-          label="Плательщик"
-          :items="this.personsStore.persons"
-          return-object
-          item-title="name"
-        ></v-select>
-
-        <v-select
-          class="select"
-          v-model="position.persons"
-          :items="this.personsStore.persons"
-          return-object
-          item-title="name"
-          chips
-          label="Кто ел?"
-          multiple
-        ></v-select>
-      </div>
-    </v-card> -->
 
     <div class="content-container">
       <div
         v-if="this.positionsStore.hasPositions"
-        class="ma-auto mb-3 w-50 mt-4"
+        class="ma-auto mb-4 w-50 mt-4"
       >
         <div class="text-center" v-if="this.positionsStore.hasEmptyData">
-          Заполните все поля
+          <app-info-text>Заполните все поля</app-info-text>
         </div>
         <app-button v-else @click="enter">Дальше</app-button>
       </div>
-      <div v-else class="text-center">Введите 1 или более позиций</div>
-      <div class="ma-auto mb-3 w-50">
+      <div v-else class="text-center">
+        <app-info-text>Введите 1 или более позиций</app-info-text>
+      </div>
+      <div class="ma-auto mb-4 w-50">
         <app-button @click="back">Назад</app-button>
       </div>
     </div>
   </v-card>
 
-  <div v-for="position in this.positionsStore.positions" :key="position.id">
+  <div
+    style="display: none"
+    v-for="position in this.positionsStore.positions"
+    :key="position.id"
+  >
     {{ JSON.stringify(position) }}
   </div>
 </template>
@@ -95,7 +51,7 @@ import { useDebtsStore } from "../stores/DebtsStore.js";
 import PositionCards from "../components/PositionCards.vue";
 
 export default {
-  components: {PositionCards},
+  components: { PositionCards },
   data() {
     return {
       positionsStore: usePositionsStore(),

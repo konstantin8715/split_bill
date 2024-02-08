@@ -1,14 +1,15 @@
 <template lang="">
   <v-card class="container">
-    <!-- TODO: toolbar вынести в отдельный элемент UI -->
     <v-toolbar color="#7B1FA2">
       <div
         class="content-container d-flex justify-space-between flex-row align-center"
       >
         <app-input
           :type="'text'"
+          :placeholder="'Введите имя'"
           @keyup.enter="addPerson"
           v-model:value="currentName"
+          class='w-50'
         ></app-input>
         <v-icon icon="mdi-plus" @click="addPerson"></v-icon>
       </div>
@@ -27,7 +28,9 @@
       <div v-if="this.personsStore.hasPersons" class="ma-auto mb-3 w-50">
         <app-button @click="enter">Дальше</app-button>
       </div>
-      <div v-else class="text-center mb-3">Введите 2 или более персон</div>
+      <div v-else class="text-center mb-3">
+        <app-info-text>Введите 2 или более персон</app-info-text>
+      </div>
       <div class="ma-auto mb-3 w-50">
         <app-button @click="back">Назад</app-button>
       </div>
