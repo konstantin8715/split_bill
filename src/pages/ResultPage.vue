@@ -6,28 +6,42 @@
         v-if="this.debtsStore.hasDebts"
         v-for="(debt, i) in this.debtsStore.debts"
         :key="i"
-        class="debts-container d-flex justify-space-between"
+        class="debts-container"
       >
-        <div>{{ debt.from.name }}</div>
+        <div class="px-6 d-flex justify-space-between align-center mt-4 info-text">
+          <div class="w-25">
+            <app-info-text>
+              {{ debt.from.name }}
+            </app-info-text>
+          </div>
 
-        <div class="d-flex flex-column align-center">
-          <div>{{ debt.sum }}</div>
-          <img
-            src="https://freesvg.org/img/arrowright.png"
-            width="50px"
-            height="25px"
-          />
+          <div class="d-flex flex-column align-center w-25 mt-4 info-text">
+            <div>
+              <app-info-text>
+                {{ debt.sum }}
+              </app-info-text>
+            </div>
+            <img
+              src="https://freesvg.org/img/arrowright.png"
+              width="80px"
+              height="30px"
+            />
+          </div>
+
+          <div class="w-25 text-right info-text">
+            <app-info-text>
+              {{ debt.to.name }}
+            </app-info-text>
+          </div>
         </div>
-
-        <div>{{ debt.to.name }}</div>
       </div>
-      <div v-else class="info-message">
+      <div v-else class="mt-4 text-center">
         <app-info-text>Никто никому ничего не должен!</app-info-text>
       </div>
-      <div class="navigate-btn">
+      <div class="m-auto w-50 mt-4 text-center">
         <app-button @click="reset">Начать сначала</app-button>
       </div>
-      <div class="navigate-btn info-message">
+      <div class="m-auto w-50 mt-4 mb-4 text-center">
         <app-button @click="back">Назад</app-button>
       </div>
     </div>
@@ -80,14 +94,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.info-message {
-  margin-top: 15px;
-  text-align: center;
+@import "../colors";
+.debts-container {
+  border-radius: 10px;
+  background: $light-primary;
 }
 
-.navigate-btn {
-  width: 50%;
-  margin: 0 auto;
-  margin-bottom: 15px;
+@media (max-width: 461px) {
+  .info-text {
+    font-size: 12px !important;
+  }
 }
 </style>

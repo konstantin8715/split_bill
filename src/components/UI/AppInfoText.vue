@@ -18,13 +18,13 @@ export default {
 
 @media (max-width: 769px) {
   .info-text {
-    font-size: $medium-button-text;
+    font-size: $medium-text;
   }
 }
 
 @media (max-width: 371px) {
   .info-text {
-    font-size: $small-button-text;
+    font-size: $small-text;
   }
 }
 </style>
