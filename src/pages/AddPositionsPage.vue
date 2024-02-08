@@ -26,10 +26,10 @@
         </div>
         <app-button v-else @click="enter">Дальше</app-button>
       </div>
-      <div v-else class="text-center">
+      <div v-else class="text-center mt-4">
         <app-info-text>Введите 1 или более позиций</app-info-text>
       </div>
-      <div class="ma-auto mb-4 w-50">
+      <div class="ma-auto mb-4 mt-4 w-50">
         <app-button @click="back">Назад</app-button>
       </div>
     </div>
