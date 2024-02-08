@@ -8,7 +8,9 @@
         :key="i"
         class="debts-container"
       >
-        <div class="px-6 d-flex justify-space-between align-center mt-4 info-text">
+        <div
+          class="px-6 d-flex justify-space-between align-center mt-4 info-text"
+        >
           <div class="w-25">
             <app-info-text>
               {{ debt.from.name }}
@@ -38,10 +40,10 @@
       <div v-else class="mt-4 text-center">
         <app-info-text>Никто никому ничего не должен!</app-info-text>
       </div>
-      <div class="m-auto w-50 mt-4 text-center">
+      <div class="w-50 mt-4 ma-auto text-center">
         <app-button @click="reset">Начать сначала</app-button>
       </div>
-      <div class="m-auto w-50 mt-4 mb-4 text-center">
+      <div class="w-50 mt-4 mb-4 ma-auto text-center">
         <app-button @click="back">Назад</app-button>
       </div>
     </div>
@@ -98,11 +100,5 @@ export default {
 .debts-container {
   border-radius: 10px;
   background: $light-primary;
-}
-
-@media (max-width: 461px) {
-  .info-text {
-    font-size: 12px !important;
-  }
 }
 </style>
