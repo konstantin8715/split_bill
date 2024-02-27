@@ -12,15 +12,7 @@ import {
 
 export const usePositionsStore = defineStore('positionsStore', {
     state: () => ({
-        positions: [
-            // {
-            //     id: 1,
-            //     name: "Борщ",
-            //     price: 150,
-            //     payer: null,
-            //     consumers: []
-            // }
-        ],
+        positions: [],
         persons: usePersonsStore(),
         currentId: 1,
     }),

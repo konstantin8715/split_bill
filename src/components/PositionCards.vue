@@ -13,24 +13,12 @@
             :placeholder="'Название'"
             class="text-center card-input w-50"
           />
-          <!-- <input
-            type="text"
-            class="position-name"
-            v-model="position.name"
-            placeholder="Название"
-          /> -->
           <app-input
             :type="'number'"
             v-model:value="position.price"
             :placeholder="'Цена'"
             class="text-center card-input w-25 ml-10"
           />
-          <!-- <input
-            type="number"
-            class="position-price"
-            v-model="position.price"
-            placeholder="Цена"
-          /> -->
         </div>
 
         <v-icon @click="$emit('delete', position)" icon="mdi-close"></v-icon>
@@ -94,26 +82,6 @@ export default {
   display: flex;
   justify-content: space-between;
   margin-top: 15px;
-  //   .position-data {
-  //     .position-name,
-  //     .position-price {
-  //       border: 2px solid $dark-primary;
-  //       border-radius: 5px;
-  //       text-align: center;
-  //       color: $primary-text;
-  //       outline: none;
-  //       font-size: 20px;
-  //     }
-
-  //     .position-name {
-  //       width: 200px;
-  //     }
-
-  //     .position-price {
-  //       margin-left: 10px;
-  //       width: 100px;
-  //     }
-  //   }
 }
 
 .card-input {
