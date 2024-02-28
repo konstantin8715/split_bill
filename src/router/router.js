@@ -1,7 +1,3 @@
-import HelloPage from '../pages/HelloPage.vue';
-import AddPersonsPage from '../pages/AddPersonsPage.vue';
-import AddPositionsPage from '../pages/AddPositionsPage.vue';
-import ResultPage from '../pages/ResultPage.vue';
 import {
     createRouter,
     createWebHistory
@@ -9,19 +5,19 @@ import {
 
 const routes = [{
         path: '/',
-        component: HelloPage,
+        component: async () => await import('../pages/HelloPage.vue'),
     },
     {
         path: '/addpersons',
-        component: AddPersonsPage,
+        component: async () => await import('../pages/AddPersonsPage.vue'),
     },
     {
         path: '/addpositions',
-        component: AddPositionsPage,
+        component: async () => await import('../pages/AddPositionsPage.vue'),
     },
     {
         path: '/result',
-        component: ResultPage,
+        component: async () => await import('../pages/ResultPage.vue'),
     },
     {
         path: '/:catchAll(.*)',
