@@ -42,7 +42,19 @@
         chips
         label="Кто ел?"
         multiple
-      ></v-select>
+      >
+        <template v-slot:prepend-item>
+          <v-list-item title="Все ели" @click="toggle(position)">
+            <template v-slot:prepend>
+              <v-checkbox-btn
+                :model-value="selectAll(position.persons)"
+              ></v-checkbox-btn>
+            </template>
+          </v-list-item>
+
+          <v-divider class="mt-2"></v-divider>
+        </template>
+      </v-select>
     </div>
   </v-card>
 </template>
@@ -61,6 +73,20 @@ export default {
     },
   },
   emits: ["delete"],
+
+  methods: {
+    selectAll(selectedPersons) {
+      return selectedPersons.length === this.persons.length;
+    },
+
+    toggle(position) {
+      if (this.selectAll(position.persons)) {
+        position.persons = [];
+      } else {
+        position.persons = this.persons.slice();
+      }
+    },
+  },
 };
 </script>
 
