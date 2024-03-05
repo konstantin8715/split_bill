@@ -8,16 +8,18 @@
       <div class="position-data-row">
         <div class="position-data">
           <app-input
-            :type="'text'"
+            type="text"
             v-model:value="position.name"
-            :placeholder="'Название'"
+            placeholder="Название"
             class="text-center card-input w-50"
           />
           <app-input
-            :type="'number'"
+            type="number"
             v-model:value="position.price"
-            :placeholder="'Цена'"
+            placeholder="Цена"
             class="text-center card-input w-25 ml-10"
+            min="0"
+            @blur="checkInput(position)"
           />
         </div>
 
@@ -86,6 +88,10 @@ export default {
         position.persons = this.persons.slice();
       }
     },
+
+    checkInput(position) {
+      if (position.price < 0) position.price = 0;
+    }
   },
 };
 </script>
