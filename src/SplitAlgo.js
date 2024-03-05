@@ -95,6 +95,7 @@ function calculateSumDebts(allDebts) {
 function calculateFinalDebts(sumDebts) {
 
     const calculateDebts = [];
+    let id = 1;
 
     for (const debt of sumDebts) {
         if (
@@ -122,17 +123,21 @@ function calculateFinalDebts(sumDebts) {
 
         if (fromTo.sum > toFrom.sum) {
             calculateDebts.push({
+                id,
                 from: fromTo.from,
                 to: toFrom.from,
                 sum: Math.round(fromTo.sum - toFrom.sum),
             });
         } else {
             calculateDebts.push({
+                id,
                 from: toFrom.from,
                 to: fromTo.from,
                 sum: Math.round(toFrom.sum - fromTo.sum),
             });
         }
+
+        id = id + 1;
     }
 
     return calculateDebts;

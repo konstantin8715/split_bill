@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <input
     :type="type"
     :value="value"
@@ -12,11 +12,11 @@ export default {
   name: "app-input",
   props: {
     value: {
-      requiered: true,
+      required: true,
     },
     type: {
       type: String,
-      requiered: true,
+      required: true,
     },
     placeholder: {
       type: String,

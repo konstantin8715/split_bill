@@ -1,6 +1,9 @@
-<template lang="">
+<template>
   <div class="app-banner d-flex align-center justify-center">
-    <span><slot></slot></span>
+    <span>
+      <slot>
+      </slot>
+    </span>
   </div>
 </template>
 

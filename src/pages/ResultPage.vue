@@ -1,27 +1,27 @@
-<template lang="">
+<template>
   <v-card class="container">
     <v-toolbar color="#7B1FA2"> </v-toolbar>
     <div class="content-container">
       <div
         v-if="this.debtsStore.hasDebts"
-        v-for="(debt, i) in this.debtsStore.debts"
-        :key="i"
+        v-for="debt in this.debtsStore.debts"
+        :key="debt.id"
         class="debts-container"
       >
         <div
           class="px-6 d-flex justify-space-between align-center mt-4 info-text"
         >
           <div class="w-25">
-            <app-info-text>
+            <span class="info-text">
               {{ debt.from.name }}
-            </app-info-text>
+            </span>
           </div>
 
           <div class="d-flex flex-column align-center w-25 mt-4 info-text">
             <div>
-              <app-info-text>
+              <span class="info-text">
                 {{ debt.sum }}
-              </app-info-text>
+              </span>
             </div>
             <img
               src="https://freesvg.org/img/arrowright.png"
@@ -31,14 +31,14 @@
           </div>
 
           <div class="w-25 text-right info-text">
-            <app-info-text>
+            <span class="info-text">
               {{ debt.to.name }}
-            </app-info-text>
+            </span>
           </div>
         </div>
       </div>
       <div v-else class="mt-4 text-center">
-        <app-info-text>Никто никому ничего не должен!</app-info-text>
+        <span class="info-text">Никто никому ничего не должен!</span>
       </div>
       <div class="w-50 mt-4 ma-auto text-center">
         <app-button @click="reset">Начать сначала</app-button>

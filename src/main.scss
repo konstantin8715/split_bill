@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 @import "colors";
+@import "font";
 
 * {
     font-family: "Lato", sans-serif;
@@ -36,4 +37,20 @@ body {
     .container {
         border-radius: 0 !important;
     }
+}
+
+.info-text {
+  font-size: $large-text;
+}
+
+@media (max-width: 769px) {
+  .info-text {
+    font-size: $medium-text;
+  }
+}
+
+@media (max-width: 371px) {
+  .info-text {
+    font-size: $small-text;
+  }
 }

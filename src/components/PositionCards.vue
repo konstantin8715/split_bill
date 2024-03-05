@@ -23,7 +23,8 @@
           />
         </div>
 
-        <v-icon @click="$emit('delete', position)" icon="mdi-close"></v-icon>
+        <v-icon @click="$emit('delete', position)" icon="mdi-close">
+        </v-icon>
       </div>
 
       <v-select

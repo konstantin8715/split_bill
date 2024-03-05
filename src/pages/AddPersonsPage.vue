@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <v-card class="container">
     <v-toolbar color="#7B1FA2">
       <div
@@ -9,9 +9,10 @@
           :placeholder="'Введите имя'"
           @keyup.enter="addPerson"
           v-model:value="currentName"
-          class='w-50'
+          class="w-50"
         ></app-input>
-        <v-icon icon="mdi-plus" @click="addPerson"></v-icon>
+        <v-icon icon="mdi-plus" @click="addPerson">
+        </v-icon>
       </div>
     </v-toolbar>
 
@@ -29,7 +30,7 @@
         <app-button @click="enter">Дальше</app-button>
       </div>
       <div v-else class="text-center mb-3">
-        <app-info-text>Введите 2 или более персон</app-info-text>
+        <span class="info-text">Введите 2 или более персон</span>
       </div>
       <div class="ma-auto mb-3 w-50">
         <app-button @click="back">Назад</app-button>
@@ -85,6 +86,3 @@ export default {
   },
 };
 </script>
-
-<style scoped lang="scss">
-</style>

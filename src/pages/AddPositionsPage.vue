@@ -1,11 +1,11 @@
-<template lang="">
+<template>
   <v-card class="container">
     <v-toolbar color="#7B1FA2">
       <div class="content-container">
         <div class="add-btn-block">
-          <app-button @click="this.positionsStore.addPosition" class="add-btn"
-            >Добавить позицию</app-button
-          >
+          <app-button @click="this.positionsStore.addPosition" class="add-btn">
+            Добавить позицию
+          </app-button>
         </div>
       </div>
     </v-toolbar>
@@ -22,12 +22,12 @@
         class="ma-auto mb-4 w-50 mt-4"
       >
         <div class="text-center" v-if="this.positionsStore.hasEmptyData">
-          <app-info-text>Заполните все поля</app-info-text>
+          <span class="info-text">Заполните все поля</span>
         </div>
         <app-button v-else @click="enter">Дальше</app-button>
       </div>
       <div v-else class="text-center mt-4">
-        <app-info-text>Введите 1 или более позиций</app-info-text>
+        <span class="info-text">Введите 1 или более позиций</span>
       </div>
       <div class="ma-auto mb-4 mt-4 w-50">
         <app-button @click="back">Назад</app-button>

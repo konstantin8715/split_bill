@@ -1,13 +1,12 @@
-<template lang="">
+<template>
   <v-list-item :value="person">
     <template v-slot:append>
-      <v-icon icon="mdi-close" @click="$emit('delete', person)"></v-icon>
+      <v-icon icon="mdi-close" @click="$emit('delete', person)">
+      </v-icon>
     </template>
 
-    <v-list-item-title
-      class="list-item-title"
-      v-text="person.name"
-    ></v-list-item-title>
+    <v-list-item-title class="list-item-title" v-text="person.name">
+    </v-list-item-title>
   </v-list-item>
 </template>
 

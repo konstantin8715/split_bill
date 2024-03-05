@@ -1,6 +1,7 @@
-<template lang="">
+<template>
   <v-btn class="btn w-100">
-    <slot></slot>
+    <slot>
+    </slot>
   </v-btn>
 </template>
 

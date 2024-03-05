@@ -1,7 +1,13 @@
-<template lang="">
+<template>
   <v-list density="compact">
-    <person-item class="pa-0" v-for="(person, i) in persons" :key="person.id"
-    :person="person" color="primary" @delete="$emit('delete', person)" />
+    <person-item
+      class="pa-0"
+      v-for="(person, i) in persons"
+      :key="person.id"
+      :person="person"
+      color="primary"
+      @delete="$emit('delete', person)"
+    />
   </v-list>
 </template>
 
@@ -17,8 +23,6 @@ export default {
       required: true,
     },
   },
-  emits: ['delete'],
+  emits: ["delete"],
 };
 </script>
-
-<style scoped lang="scss"></style>
