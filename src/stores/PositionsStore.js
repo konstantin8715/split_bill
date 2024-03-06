@@ -25,7 +25,8 @@ export const usePositionsStore = defineStore('positionsStore', {
         hasEmptyData() {
             for (const p of this.positions) {
                 for (const key in p) {
-                    if (!p[key] && p[key] != 0) {
+                    if (p[key] === 0) continue;
+                    if (!p[key]) {
                         return true;
                     }
                     if (Array.isArray(p[key])) {
